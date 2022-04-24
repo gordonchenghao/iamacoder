@@ -1,0 +1,43 @@
+table,
+th,
+td {
+    border:1px solid grey;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+#mytable {
+    color: orange;
+}
+
+.mytableclass {
+    background: rgba(248, 234, 43, 0.561);
+}
+
+ul.info>li li{
+    list-style-type: none;
+}
+
+ol li a{
+    text-decoration: none;
+}
+ol li a[target="_blank"]{
+    color:rgba(248, 234, 43, 0.561);
+}
+
+ ol li a[href="https://google.com"]{
+    color:rgba(25, 108, 210, 0.561);
+}
+
+ol li a[href^="http"]{
+    color:brown
+}
+
+ol li a[href$="com.au"]{
+    background:black;
+}
+
+ol li a[href*="google"][href$=".com.au"]{
+    background:grey;
+}
