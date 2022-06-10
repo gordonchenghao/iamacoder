@@ -4,12 +4,14 @@
   --background-color: #000;
   --font-color: #fff;
   --overlay-color: #03a9f4;
+  --menu-width: 250px;
 }
 
 html,
 body {
   width: 100vw;
   height: 100vh;
+  background-color: var(--overlay-color);
 }
 
 * {
@@ -31,6 +33,12 @@ body {
   background-color: var(--background-color);
   color: var(--font-color);
   z-index: 2;
+  transition: all 0.65s ease;
+}
+
+.showcase.active {
+  right: var(--menu-width);
+  width: calc(100% - var(--menu-width));
 }
 
 .showcase header {
@@ -44,6 +52,7 @@ body {
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
+  transition: 0.3s ease;
 }
 
 .showcase video {
@@ -112,12 +121,18 @@ body {
   position: relative;
   width: 60px;
   height: 60px;
-  background: url("/Project 1/src/img/menu.svg");
+  background: url("/Project01/src/img/menu.svg");
   background-repeat: no-repeat;
   background-size: 30px;
   background-position: center;
   cursor: pointer;
   filter: invert(1);
+  transition: all 0.65s ease;
+}
+
+.toggle.active {
+  background-image: url("/Project01/src/img/close.svg");
+  transform: rotate(720deg);
 }
 
 .social {
@@ -142,10 +157,80 @@ body {
   transform: translateY(-10px);
 }
 .menu {
-  display: none;
-  color: var(--background-color);
-  background-color: var(--font-color);
+  position: absolute;
+  right: calc(0.5 * var(--menu-width));
+  top: 50%;
+  transform: translateY(-50%);
+  transform: translateX(50%);
+  display: block;
+  color: var(--font-color);
+  background-color: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+  text-align: center;
 }
+
+.menu a{
+  position:relative;
+}
+
+.menu a::before {
+  content:'';
+  position:absolute;
+  top:90%;
+  left:0;
+  width:0;
+  background-color:var(--font-color);
+  height:3px;
+  transition: all 0.65s ease;
+}
+.menu.active {
+  opacity: 1;
+}
+
+
+.menu li,
+a {
+  color: inherit;
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  transition: all 0.65s ease;
+}
+
+.menu a:hover { 
+  color:var(--background-color);
+}
+
+.menu a:hover:before {
+  background-color:var(--background-color);
+  width:100%;
+}
+
 .logo {
   text-transform: uppercase;
+}
+
+@media (max-width: 798px) {
+  .showcase header {
+    padding:40px;
+  }
+
+  .text h1 {
+    font-size:3rem;
+  }
+
+  .text h2 {
+    font-size: 2rem
+  }
+
+  .menu li,
+a {
+  
+  font-size: 1rem;
+  line-height: 1.5rem;
+  
+}
 }
